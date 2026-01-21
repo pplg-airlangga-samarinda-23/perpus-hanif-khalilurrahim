@@ -6,14 +6,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $id = $_GET['id'];
     $sql = "SELECT * FROM buku WHERE id=?";
     $book = $koneksi->execute_query($sql, [$id])->fetch_assoc();
-} elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $judul = $_POST['judul'];
-    $pengarang = $_POST['[pengarang'];
+    $pengarang = $_POST['pengarang'];
     $stok = $_POST['stok'];
     $id = $_GET['id'];
 
     $sql = "UPDATE buku SET judul=?, pengarang=?, stok=? WHERE id=?";
-    $result = $koneksi-execute_query($sql, [$judul, $pengarang, $stok, $id]);
+    $result = $koneksi->execute_query($sql, [$judul, $pengarang, $stok, $id]);
 
     if ($result) {
         header("location:index.php");
